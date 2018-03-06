@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: cloud_client
+  cloud:
+    config:
+      uri: http://10.97.5.21:8888
+management:
+      security:
+          enabled: false
