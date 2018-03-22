@@ -1,8 +1,6 @@
 package app.handlers;
 
-import app.model.EventRequest;
-import app.model.EventResponse;
-import org.springframework.cloud.function.adapter.aws.SpringBootRequestHandler;
+import org.springframework.cloud.function.adapter.aws.SpringBootStreamHandler;
 
-public class EventRequestHandler extends SpringBootRequestHandler<EventRequest, EventResponse> {
+public class EventRequestHandler extends SpringBootStreamHandler {
 }

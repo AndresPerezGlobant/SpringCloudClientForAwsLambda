@@ -3,6 +3,7 @@ package app.processors.impl;
 import app.config.FlightProfileCondition;
 import app.model.EventRequest;
 import app.model.EventResponse;
+import app.model.payloads.FlightPayload;
 import app.processors.EventProcessor;
 import app.utilities.Profiles;
 import org.springframework.context.annotation.Conditional;
@@ -27,7 +28,13 @@ public class FlightEventProcessor implements EventProcessor {
             return response;
         }
         String message = "EventRequest processed by: " + Profiles.FLIGHT_PROFILE;
-        int requestSize = request.getPayload() == null ? 0 : request.getPayload().length();
+        int requestSize = request.getMessage() == null ? 0 : request.getMessage().length();
+        if (request.getEventPayload() instanceof FlightPayload) {
+            FlightPayload flightPayload = (FlightPayload) request.getEventPayload();
+            message += " OK [" + flightPayload.toString() + "]";
+        } else {
+            message += " FAIL [" + request.getEventPayload().toString() + "] class: " + request.getEventPayload().getClass().getCanonicalName();
+        }
         response = new EventResponse(request.getEventId(), message, requestSize);
         return response;
     }

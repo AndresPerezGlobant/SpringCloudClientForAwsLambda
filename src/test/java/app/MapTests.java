@@ -17,18 +17,17 @@
 package app;
 
 import app.config.Properties;
+import app.model.EventPayload;
 import app.model.EventRequest;
 import app.model.EventResponse;
+import app.model.payloads.CrewPayload;
 import app.processors.EventProcessor;
 import app.processors.impl.FlightEventProcessor;
+import com.fasterxml.jackson.databind.node.POJONode;
 import org.junit.Before;
-import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.internal.util.reflection.Whitebox;
-import org.springframework.cloud.function.adapter.aws.SpringBootRequestHandler;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class MapTests {
 
@@ -38,7 +37,7 @@ public class MapTests {
     @InjectMocks
     private Application application = new Application(new Properties());
 
-    private EventRequest request = new EventRequest("123", "test");
+    private EventRequest request = new EventRequest("123", "test", new CrewPayload(1,"",""));
 
     @Before
     public void prepareTest() {
@@ -48,7 +47,7 @@ public class MapTests {
         response.setRequestSize(7);
         Whitebox.setInternalState(application, "eventProcessor", eventProcessor);
     }
-
+/*
     @Test
     public void test() {
         EventResponse result = application.function().apply(request);
@@ -58,9 +57,10 @@ public class MapTests {
     @Test
     public void test_() {
         EventResponse result = application.function().apply(request);
-        assertThat(result.getMessage()).isEqualTo("EventRequest processed by: flight_profile");
+        System.out.println(result.getMessage());
+        assertThat(result.getMessage()).isEqualTo("EventRequest processed by: flight_profile OK [CrewPayload{crewNumber=0, crewType='null', crewName='null'}]");
     }
-/*
+
     @Test
     public void start() throws Exception {
         SpringBootRequestHandler<Object, Object> handler = new SpringBootRequestHandler<>(Application.class);

@@ -64,6 +64,7 @@ configurations {
 }
 
 dependencies {
+	compile('org.apache.commons:commons-lang3:3.4')
 	compile("org.springframework.cloud:spring-cloud-starter-function-web:${springCloudFunctionVersion}")
 	compile("org.springframework.cloud:spring-cloud-function-adapter-aws:${springCloudFunctionVersion}")
 	compileOnly("com.amazonaws:aws-lambda-java-events:${awsLambdaEventsVersion}")

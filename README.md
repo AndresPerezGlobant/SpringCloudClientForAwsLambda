@@ -82,7 +82,7 @@ To test the application you shoul sen the request defined in the class app.model
 ```
 {
   "eventId": "123",
-  "payload": "request test"
+  "message": "request test"
 }
 ```
 and if everithing is ok you sould see the response with the format defined in the class: class app.model.EventResponse
