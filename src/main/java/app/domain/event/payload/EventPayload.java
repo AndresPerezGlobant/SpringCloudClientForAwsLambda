@@ -1,7 +1,7 @@
-package app.model;
+package app.domain.event.payload;
 
-import app.model.payloads.CrewPayload;
-import app.model.payloads.FlightPayload;
+import app.domain.event.payload.impl.CrewPayload;
+import app.domain.event.payload.impl.FlightPayload;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;

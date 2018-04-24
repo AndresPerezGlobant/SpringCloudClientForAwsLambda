@@ -1,13 +1,13 @@
-package app.config;
+package app.profile.conditions;
 
-import app.utilities.Profiles;
+import app.profile.Profiles;
 import org.springframework.context.annotation.Condition;
 import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
 import java.util.Arrays;
 
-public class CrewProfileCondition implements Condition {
+public class CrewCondition implements Condition {
 
     @Override
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {

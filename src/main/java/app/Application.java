@@ -17,16 +17,10 @@
 package app;
 
 import app.config.Properties;
-import app.model.EventRequest;
-import app.model.EventResponse;
-import app.processors.EventProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Bean;
-
-import java.util.function.Function;
 
 @SpringBootApplication
 @EnableConfigurationProperties(Properties.class)
@@ -37,14 +31,6 @@ public class Application {
     @Autowired
     public Application(Properties props) {
         this.props = props;
-    }
-
-    @Autowired
-    private EventProcessor eventProcessor;
-
-    @Bean
-    public Function<EventRequest, EventResponse> function() {
-        return eventRequest -> eventProcessor.process(eventRequest);
     }
 
     public static void main(String[] args) throws Exception {

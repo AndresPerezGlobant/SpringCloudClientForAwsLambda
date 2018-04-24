@@ -1,8 +1,8 @@
 package app.processors;
 
-import app.model.EventRequest;
-import app.model.EventResponse;
+import app.domain.event.EventMessage;
+import app.domain.response.EventResponse;
 
-public interface EventProcessor<T extends EventRequest> {
+public interface EventProcessor<T extends EventMessage> {
     EventResponse process(T request);
 }

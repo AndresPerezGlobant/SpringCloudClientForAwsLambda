@@ -1,6 +1,6 @@
-package app.model.payloads;
+package app.domain.event.payload.impl;
 
-import app.model.EventPayload;
+import app.domain.event.payload.EventPayload;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;

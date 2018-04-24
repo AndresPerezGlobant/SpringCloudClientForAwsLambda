@@ -17,13 +17,11 @@
 package app;
 
 import app.config.Properties;
-import app.model.EventPayload;
-import app.model.EventRequest;
-import app.model.EventResponse;
-import app.model.payloads.CrewPayload;
+import app.domain.event.EventMessage;
+import app.domain.response.EventResponse;
+import app.domain.event.payload.impl.CrewPayload;
 import app.processors.EventProcessor;
 import app.processors.impl.FlightEventProcessor;
-import com.fasterxml.jackson.databind.node.POJONode;
 import org.junit.Before;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -37,7 +35,7 @@ public class MapTests {
     @InjectMocks
     private Application application = new Application(new Properties());
 
-    private EventRequest request = new EventRequest("123", "test", new CrewPayload(1,"",""));
+    private EventMessage request = new EventMessage("123", "flight","test", new CrewPayload(1,"",""));
 
     @Before
     public void prepareTest() {
@@ -58,13 +56,13 @@ public class MapTests {
     public void test_() {
         EventResponse result = application.function().apply(request);
         System.out.println(result.getMessage());
-        assertThat(result.getMessage()).isEqualTo("EventRequest processed by: flight_profile OK [CrewPayload{crewNumber=0, crewType='null', crewName='null'}]");
+        assertThat(result.getMessage()).isEqualTo("EventMessage processed by: flight_profile OK [CrewPayload{crewNumber=0, crewType='null', crewName='null'}]");
     }
 
     @Test
     public void start() throws Exception {
         SpringBootRequestHandler<Object, Object> handler = new SpringBootRequestHandler<>(Application.class);
-        handler.handleRequest(new EventRequest("123", "init"), null);
+        handler.handleRequest(new EventMessage("123", "init"), null);
         handler.close();
     }
 */

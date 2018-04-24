@@ -78,14 +78,14 @@ To specify the configuration that you want to load for the application you must 
 ```
 This way you will load the event_consumer-prod_plt_flight.yml configuration file and the application weill start the FlightEventProcessor bean.
 
-To test the application you shoul sen the request defined in the class app.model.EventRequest with a json format:
+To test the application you shoul sen the request defined in the class app.domain.event.EventMessage with a json format:
 ```
 {
   "eventId": "123",
   "message": "request test"
 }
 ```
-and if everithing is ok you sould see the response with the format defined in the class: class app.model.EventResponse
+and if everithing is ok you sould see the response with the format defined in the class: class app.domain.response.EventResponse
 ```
 {
   "eventId": "123",

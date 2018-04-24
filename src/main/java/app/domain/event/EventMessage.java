@@ -1,18 +1,22 @@
-package app.model;
+package app.domain.event;
+
+import app.domain.event.payload.EventPayload;
 
 import java.io.Serializable;
 
-public class EventRequest implements Serializable {
+public class EventMessage implements Serializable {
 
     private String eventId;
+    private String eventType;
     private String message;
     protected EventPayload eventPayload;
 
-    public EventRequest() {
+    public EventMessage() {
     }
 
-    public EventRequest(String eventId, String message, EventPayload eventPayload) {
+    public EventMessage(String eventId, String eventType, String message, EventPayload eventPayload) {
         this.eventId = eventId;
+        this.eventType = eventType;
         this.message = message;
         this.eventPayload = eventPayload;
     }
@@ -41,10 +45,19 @@ public class EventRequest implements Serializable {
         this.eventPayload = eventPayload;
     }
 
+    public String getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
+    }
+
     @Override
     public String toString() {
-        return "EventRequest{" +
+        return "EventMessage{" +
                 "eventId='" + eventId + '\'' +
+                ", eventType='" + message + '\'' +
                 ", message='" + message + '\'' +
                 ", eventPayload=" + eventPayload.toString() +
                 '}';
